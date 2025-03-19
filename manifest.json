@@ -1,0 +1,21 @@
+{
+  "name": "Get Annie Chan",
+  "short_name": "Annie Chan",
+  "description": "A web app tribute for Annie Chan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8c8dc",
+  "theme_color": "#ff69b4",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
