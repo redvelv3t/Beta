@@ -89,6 +89,13 @@
     </style>
 
     <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+            .then(() => console.log("Service Worker Registered"))
+            .catch(error => console.error("Service Worker Error:", error));
+        }
+
         // Haptic feedback function
         function triggerHapticFeedback() {
             if ("vibrate" in navigator) {
@@ -136,7 +143,6 @@
 <body>
     <div class="container">
         <h1>Welcome to Get Annie Chan 🌸</h1>
-        <p>Features artwork from CT Studios</p>
         
         <a id="downloadButton" href="annie_chan.png" onclick="handleDownload(event);">
             <button class="default-btn">Get Annie Chan</button>
@@ -148,8 +154,7 @@
     <button class="dropdown-btn" onclick="toggleCredits()">Credits & Fair Use</button>
     <div id="credits-box" class="dropdown-content">
         <p><strong>GET ANNIE CHAN V2.0</strong></p>
-        <p>(Website by GAC) - Artwork by CT Studios</p>
-        <p>Published by GAC / For Entertainment Purposes Only</p>
+        <p>(Website by GAC) - Published by GAC / For Entertainment Purposes Only</p>
         <p>Maintained & Updated by GAC Web Division</p>
         <p>Version 2.0 – 2025 Edition - Produced at GAC Web Division</p>
         <p><strong>"This artwork speaks to me, and the rest of the world should see it. Support the artist."</strong></p>
