@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Annie Chan</title>
     
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="manifest.json">
-    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     
@@ -49,11 +46,6 @@
             margin-top: 15px;
             color: #666;
         }
-        .disclaimer {
-            font-size: 12px;
-            color: #666;
-            margin-top: 30px;
-        }
         .copyright {
             font-size: 12px;
             color: #999;
@@ -89,13 +81,6 @@
     </style>
 
     <script>
-        // Register Service Worker
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-            .then(() => console.log("Service Worker Registered"))
-            .catch(error => console.error("Service Worker Error:", error));
-        }
-
         // Haptic feedback function
         function triggerHapticFeedback() {
             if ("vibrate" in navigator) {
@@ -109,28 +94,9 @@
             }
         }
 
-        // Detect iOS version for auto-download
-        function getIOSVersion() {
-            let match = navigator.userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
-            return match ? parseFloat(match[1] + "." + match[2]) : null;
-        }
-
+        // Handle Download with Haptic Feedback
         function handleDownload(event) {
-            let iosVersion = getIOSVersion();
-            
-            if (iosVersion && iosVersion >= 11) {
-                let link = document.createElement("a");
-                link.href = "annie_chan.png";
-                link.download = "annie_chan.png";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } else {
-                window.open("annie_chan.png", "_blank");
-            }
-            
-            triggerHapticFeedback();
-            event.preventDefault();
+            triggerHapticFeedback(); // Trigger vibration feedback
         }
 
         // Dropdown Credits
@@ -144,7 +110,7 @@
     <div class="container">
         <h1>Welcome to Get Annie Chan 🌸</h1>
         
-        <a id="downloadButton" href="annie_chan.png" onclick="handleDownload(event);">
+        <a id="downloadButton" href="annie_chan.png" download onclick="handleDownload(event);">
             <button class="default-btn">Get Annie Chan</button>
         </a>
 
