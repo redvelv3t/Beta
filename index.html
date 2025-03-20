@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Annie Chan</title>
     
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="manifest" href="manifest.json">
     
     <!-- Styles -->
     <style>
@@ -64,23 +66,43 @@
             font-size: 12px;
             color: #777;
         }
+        /* Dropdown Styles */
+        .dropdown-btn {
+            background-color: #ff69b4;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .dropdown-content {
+            display: none;
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .show {
+            display: block;
+        }
     </style>
 
     <script>
         // Haptic feedback function
         function triggerHapticFeedback() {
             if ("vibrate" in navigator) {
-                navigator.vibrate(50); // Android vibration
+                navigator.vibrate(50);
             } else if (window.navigator.userAgent.includes("iPhone")) {
                 try {
-                    window.navigator.vibrate(1); // iOS Taptic Engine
+                    window.navigator.vibrate(1);
                 } catch (e) {
                     console.warn("Haptic feedback not supported.");
                 }
             }
         }
 
-        // Detect iOS version for auto-download logic
+        // Detect iOS version for auto-download
         function getIOSVersion() {
             let match = navigator.userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
             return match ? parseFloat(match[1] + "." + match[2]) : null;
@@ -103,6 +125,12 @@
             triggerHapticFeedback();
             event.preventDefault();
         }
+
+        // Dropdown Credits
+        function toggleCredits() {
+            var credits = document.getElementById("credits-box");
+            credits.classList.toggle("show");
+        }
     </script>
 </head>
 <body>
@@ -117,26 +145,20 @@
         <p><small>Long press to save on mobile. Right-click to save on desktop.</small></p>
     </div>
 
-    <div class="container">
-        <h2>Credits & Fair Use</h2>
-        <p>GET ANNIE CHAN V2.0</p>
-        <p>(Website by GAC)</p>
-        <p>Artwork by CT Studios</p>
+    <button class="dropdown-btn" onclick="toggleCredits()">Credits & Fair Use</button>
+    <div id="credits-box" class="dropdown-content">
+        <p><strong>GET ANNIE CHAN V2.0</strong></p>
+        <p>(Website by GAC) - Artwork by CT Studios</p>
         <p>Published by GAC / For Entertainment Purposes Only</p>
         <p>Maintained & Updated by GAC Web Division</p>
-        <p>Website version 2.0 – 2025 Edition</p>
-        <p>Produced at GAC Web Division</p>
-
+        <p>Version 2.0 – 2025 Edition - Produced at GAC Web Division</p>
         <p><strong>"This artwork speaks to me, and the rest of the world should see it. Support the artist."</strong></p>
-
         <p>“Get Annie Chan” is a tribute project. GAC does not claim ownership of any artwork used. All rights belong to their respective creators.</p>
-        <p>This website is <strong>not for profit</strong> and generates <strong>zero revenue.</strong> No money is made from this project.</p>
-        <p>Fair Use Disclaimer: This site falls under fair use as a <strong>non-commercial, transformative tribute.</strong> It exists solely to spread appreciation for the artist’s work. If the original creator wishes for its removal, it will be taken down immediately.</p>
-        <p>Distributed digitally. No physical releases.</p>
+        <p><strong>Fair Use Disclaimer:</strong> This site falls under fair use as a <strong>non-commercial, transformative tribute.</strong> If the original creator wishes for its removal, it will be taken down immediately.</p>
     </div>
 
     <p class="footer">Website made with ❤️</p>
     <p class="copyright">© 2015 - 2025 GAC</p>
-    <p class="version">Version 2.0 Beta</p> <!-- Beta Testing Version -->
+    <p class="version">Version 2.0 Beta</p>
 </body>
 </html>
