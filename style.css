@@ -28,6 +28,7 @@ button {
     display: inline-block;
     width: 80%;
     max-width: 600px;
+    margin-bottom: 20px; /* Adds space below the main box */
 }
 .footer {
     font-size: 14px;
@@ -40,11 +41,9 @@ button {
     margin-top: 5px;
 }
 .version {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
     font-size: 12px;
     color: #777;
+    margin-top: 5px;
 }
 /* Small Extras Button */
 .extras-link {
@@ -57,4 +56,15 @@ button {
 }
 .extras-link:hover {
     color: #ff1493; /* Darker Pink */
+}
+/* Credits Section (Now Styled as Regular Text) */
+.credits-section {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #333;
+    width: 80%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
