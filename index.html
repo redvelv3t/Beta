@@ -2,92 +2,161 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Get Annie Chan</title>
-
-  <!-- Link to external CSS -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Web App Manifest -->
-  <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <style>
+    :root {
+      --bg-color: #f8c8dc;
+      --text-color: #000;
+      --box-bg: #fff;
+      --button-bg: #e91e63;
+      --button-text: #fff;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      text-align: center;
+      padding: 50px 10px;
+      margin: 0;
+    }
+
+    .container {
+      background: var(--box-bg);
+      padding: 20px;
+      border-radius: 30px;
+      display: inline-block;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .download-button {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .underline-link {
+      display: block;
+      margin-top: 24px;
+      font-size: 14px;
+      color: #e91e63;
+      text-decoration: underline;
+    }
+
+    .dark-toggle {
+      margin-top: 10px;
+      display: none;
+      font-size: 14px;
+    }
+
+    .credits {
+      font-size: 14px;
+      margin-top: 40px;
+      color: #c2185b;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .credits a {
+      color: #e91e63;
+      text-decoration: underline;
+    }
+
+    .footer {
+      font-size: 13px;
+      margin-top: 20px;
+      color: #777;
+    }
+
+    .footer a {
+      color: #777;
+      text-decoration: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #121212;
+        --text-color: #eee;
+        --box-bg: #1e1e1e;
+        --button-bg: #ff4081;
+        --button-text: #fff;
+      }
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #eee;
+      --box-bg: #1e1e1e;
+      --button-bg: #ff4081;
+      --button-text: #fff;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>Welcome to Get Annie Chan 🌸</h1>
+    <h1>Welcome to Get Annie Chan 
+      <img src="annie_thumb.jpg" alt="Annie" style="height: 28px; vertical-align: middle;" />
+    </h1>
 
-    <!-- Main Download Button -->
-    <a id="downloadButton" href="annie_chan.png" onclick="handleDownload(event);">
-      <button class="default-btn">Get Annie Chan</button>
-    </a>
+    <a href="annie_chan.png" class="download-button" download>Get Annie Chan</a>
 
-    <!-- Extras Tab (Still Below Main Box) -->
-    <a href="extras.html" class="extras-link">Extras</a>
+    <a href="/extras" class="underline-link">Extras</a>
+
+    <label for="darkToggle" class="dark-toggle">
+      <input type="checkbox" id="darkToggle" onchange="toggleDarkMode()"> Dark Mode
+    </label>
   </div>
 
-  <!-- Credits & Fair Use (Now Under Main Box, No Extra Box) -->
-  <div class="credits-section">
-    <h2>Credits & Fair Use</h2>
-    <p><strong>Get Annie Chan</strong></p>
-    <p>(Website by GAC) - Published by GAC / For Entertainment Purposes Only</p>
+  <div class="credits">
+    <strong>Credits & Fair Use</strong>
+    <p>(Website by GAC) – Published by GAC / For Entertainment Purposes Only</p>
     <p>Maintained & Updated by GAC Web Division</p>
-    <p>Version 2.0 – 2025 Edition - Produced at GAC Web Division</p>
-    <p><strong>"This artwork speaks to me, and the rest of the world should see it. Support the artist."</strong></p>
+    <p>Version 2.1 Beta 1 – 2025 Edition – Produced at GAC Web Division</p>
+    <p>"This artwork speaks to me, and the rest of the world should see it. Support the artist."</p>
+    <p>Featuring artwork from ctchrysler 
+      <a href="https://www.deviantart.com/dctb/art/Annie-Chan-579680748" target="_blank">“Annie Chan”</a> 
+      dCTb ©️2015
+    </p>
     <p>“Get Annie Chan” is a tribute project. GAC does not claim ownership of any artwork used. All rights belong to their respective creators.</p>
-    <p><strong>Fair Use Disclaimer:</strong> This site falls under fair use as a <strong>non-commercial, transformative tribute.</strong> If the original creator wishes for its removal, it will be taken down immediately.</p>
-
-    <!-- Hidden Tribute to Sweet Girl -->
-    <!-- Rest in peace, Sweet Girl. 🐋 -->
+    <p><strong>Fair Use Disclaimer:</strong> This site falls under fair use as a non-commercial, transformative tribute. If the original creator wishes for its removal, it will be taken down immediately.</p>
   </div>
 
-  <!-- Footer -->
-  <p class="footer">Website made with ❤️</p>
-  <p class="copyright">© 2025 GAC</p>
-  <p class="version">Version 2.0</p>
-  <p style="font-size: 12px; color: #777; margin-top: 10px;">
-    Peace & <a href="https://www.youtube.com/watch?v=PUT_DAFT_MAFIA_LINK_HERE" target="_blank" style="text-decoration: none; color: inherit;">Love</a>
-  </p>
+  <div class="footer">
+    © 2025 GAC<br />
+    Peace and <a href="https://m.youtube.com/watch?v=gDg7XKHPix8" target="_blank">Love</a>
+  </div>
 
-  <!-- JavaScript -->
   <script>
-    // Register Service Worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(() => console.log("Service Worker Registered"))
-        .catch(error => console.error("Service Worker Error:", error));
-    }
-
-    // Haptic Feedback
-    function triggerHapticFeedback() {
-      if ("vibrate" in navigator) {
-        navigator.vibrate(50);
-      }
-    }
-
-    // Detect iOS Version
     function getIOSVersion() {
-      let match = navigator.userAgent.match(/OS (\d+)_(\d+)_?(\d+)?/);
-      return match ? parseFloat(match[1] + "." + match[2]) : null;
+      const match = navigator.userAgent.match(/OS (\\d+)_/);
+      return match ? parseInt(match[1]) : null;
     }
 
-    // Handle Download Button Behavior
-    function handleDownload(event) {
-      let iosVersion = getIOSVersion();
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
 
-      if (iosVersion && iosVersion >= 11) {
-        const link = document.createElement("a");
-        link.href = "annie_chan.png";
-        link.download = "annie_chan.png";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } else {
-        window.open("annie_chan.png", "_blank");
+    window.onload = function () {
+      const iosVersion = getIOSVersion();
+      const darkToggle = document.querySelector(".dark-toggle");
+      if (iosVersion && iosVersion < 13) {
+        darkToggle.style.display = "block";
       }
-
-      triggerHapticFeedback();
-      event.preventDefault();
-    }
+    };
   </script>
 </body>
 </html>
