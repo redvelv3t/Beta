@@ -1,85 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Get Annie Chan</title>
-  <link rel="icon" href="favicon.png" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Annie Chan</title>
+  <link rel="icon" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="popup" id="popup">
-    <span class="close-btn" onclick="closePopup()">×</span>
-    <p>Welcome to Get Annie Chan!</p>
-  </div>
 
-  <div class="popup minimized" id="popup-mini" onclick="expandPopup()">
-    <p>Welcome to Get Annie Chan!</p>
-  </div>
+  <div class="card">
+    <h1 class="site-title">
+      Welcome to Get Annie Chan
+      <img src="annie_thumb.jpg" alt="Annie Icon" class="annie-icon" />
+    </h1>
+    <a id="downloadButton" href="annie_chan.png" onclick="handleDownload(event);">
+      <button class="button">Get Annie Chan</button>
+    </a>
+    <div class="extras-container">
+      <a href="/extras" class="underline-link">Extras</a>
+    </div>
+  </div>
 
-  <div class="card">
-    <h1 class="site-title">Welcome to Get Annie Chan <img src="annie_thumb.jpg" class="annie-icon" alt="Annie Icon" /></h1>
-    <a id="downloadButton" href="annie_chan.png" onclick="handleDownload(event);">
-      <button class="button">Get Annie Chan</button>
-    </a>
-    <div class="extras-container">
-      <a href="/extras" class="underline-link">Extras</a>
-    </div>
-  </div>
+  <div class="credits">
+    <strong>Credits & Fair Use</strong>
+    <p>(Website by GAC) – Published by GAC / For Entertainment Purposes Only</p>
+    <p>Maintained & Updated by GAC Web Division</p>
+    <p>Version 2.2 Beta 2 – 2025 Edition – Produced at GAC Web Division</p>
+    <p>"This artwork speaks to me, and the rest of the world should see it. Support the artist."</p>
+    <p>“Get Annie Chan” is a tribute project. GAC does not claim ownership of any artwork used. All rights belong to their respective creators.</p>
+    <p>Featuring artwork from ctchrysler <a href="https://www.deviantart.com/dctb/art/Annie-Chan-579680748" target="_blank">“Annie Chan”</a> dCTb ©2015</p>
+    <p><strong>Fair Use Disclaimer:</strong> This site falls under fair use as a non-commercial, transformative tribute. If the original creator wishes for its removal, it will be taken down immediately.</p>
+    <p>© 2025 GAC</p>
+    <p>Peace and <a href="https://m.youtube.com/watch?v=gDg7XKHPix8" style="text-decoration: none;">Love</a></p>
+  </div>
 
-  <div class="credits">
-    <strong>Credits & Fair Use</strong>
-    <p>(Website by GAC) – Published by GAC / For Entertainment Purposes Only</p>
-    <p>Maintained & Updated by GAC Web Division</p>
-    <p>Version 2.2 Beta 1 – Produced at GAC Web Division</p>
-    <p>"This artwork speaks to me, and the rest of the world should see it. Support the artist."</p>
-    <p>“Get Annie Chan” is a tribute project. GAC does not claim ownership of any artwork used. All rights belong to their respective creators.</p>
-    <p>Featuring artwork from ctchrysler <a href="https://www.deviantart.com/dctb/art/Annie-Chan-579680748" target="_blank">“Annie Chan”</a> dCTb ©2015</p>
-    <p><strong>Fair Use Disclaimer:</strong> This site falls under fair use as a non-commercial, transformative tribute. If the original creator wishes for its removal, it will be taken down immediately.</p>
-    <p>© 2025 GAC</p>
-    <p>Peace and <a href="https://m.youtube.com/watch?v=gDg7XKHPix8">Love</a></p>
-  </div>
+  <!-- PROMO POPUP -->
+  <div class="promo-popup closed" id="promoPopup">
+    <div class="promo-close" onclick="togglePopup(false)">×</div>
+    <div class="promo-header" onclick="togglePopup(true)">
+      <h4>Get Megan</h4>
+      <img src="megan_thumb.jpeg" alt="Megan Thumbnail">
+    </div>
+    <div class="promo-body">
+      <h5>Introducing</h5>
+      <p><strong>Getmagan.org!</strong></p>
+      <p>Get Annie’s Friend</p>
+      <p>Coming Soon!!</p>
+    </div>
+  </div>
 
-  <script>
-    function getIOSVersion() {
-      const match = navigator.userAgent.match(/OS (\d+)_/);
-      return match ? parseInt(match[1]) : null;
-    }
+  <!-- POPUP STYLES -->
+  <style>
+    .promo-popup {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 280px;
+      background-color: #5B5259;
+      color: #f8c8dc;
+      border-radius: 20px;
+      border: 2px solid #f8c8dc;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      font-family: Arial, sans-serif;
+      z-index: 9999;
+      transition: height 0.3s ease, padding 0.3s ease;
+      overflow: hidden;
+    }
 
-    function handleDownload(event) {
-      const ios = getIOSVersion();
-      if (ios >= 11) {
-        const link = document.createElement("a");
-        link.href = "annie_chan.png";
-        link.download = "annie_chan.png";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } else {
-        window.open("annie_chan.png", "_blank");
-      }
-      event.preventDefault();
-    }
+    .promo-popup.closed {
+      height: 70px;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
 
-    window.onload = function() {
-      if (!localStorage.getItem("seenPopup")) {
-        document.getElementById("popup").style.display = "block";
-        localStorage.setItem("seenPopup", "true");
-      } else {
-        document.getElementById("popup-mini").style.display = "block";
-      }
-    }
+    .promo-popup.open {
+      height: 190px;
+      padding: 20px 18px;
+    }
 
-    function closePopup() {
-      document.getElementById("popup").style.display = "none";
-      document.getElementById("popup-mini").style.display = "block";
-    }
+    .promo-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-    function expandPopup() {
-      document.getElementById("popup-mini").style.display = "none";
-      document.getElementById("popup").style.display = "block";
-    }
-  </script>
+    .promo-header h4 {
+      font-size: 18px;
+      margin: 0;
+      font-weight: bold;
+      color: #f8c8dc;
+    }
+
+    .promo-header img {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-left: 12px;
+    }
+
+    .promo-body {
+      margin-top: 18px;
+      display: none;
+    }
+
+    .promo-popup.open .promo-body {
+      display: block;
+    }
+
+    .promo-body h5 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .promo-body p {
+      margin: 4px 0;
+      font-size: 14px;
+    }
+
+    .promo-close {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #f8c8dc;
+      cursor: pointer;
+    }
+  </style>
+
+  <!-- SCRIPT FOR DOWNLOAD + POPUP -->
+  <script>
+    function getIOSVersion() {
+      const match = navigator.userAgent.match(/OS (\d+)_/);
+      return match ? parseInt(match[1]) : null;
+    }
+
+    function handleDownload(event) {
+      const ios = getIOSVersion();
+      if (ios >= 11) {
+        const link = document.createElement("a");
+        link.href = "annie_chan.png";
+        link.download = "annie_chan.png";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        window.open("annie_chan.png", "_blank");
+      }
+      event.preventDefault();
+    }
+
+    function togglePopup(open) {
+      const popup = document.getElementById("promoPopup");
+      if (open) {
+        popup.classList.remove("closed");
+        popup.classList.add("open");
+      } else {
+        popup.classList.remove("open");
+        popup.classList.add("closed");
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("promoPopup").classList.add("open");
+    });
+  </script>
+
 </body>
 </html>
