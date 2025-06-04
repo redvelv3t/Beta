@@ -21,6 +21,12 @@ body {
 
 .card h1 {
   color: red;
+  margin-bottom: 10px;
+}
+
+.version {
+  font-size: 0.8em;
+  color: red;
   margin-bottom: 20px;
 }
 
@@ -56,6 +62,9 @@ body {
   }
   .card h1 {
     font-size: 1.5em;
+  }
+  .version {
+    font-size: 0.7em;
   }
   .button {
     font-size: 14px;
