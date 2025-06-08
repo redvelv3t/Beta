@@ -55,34 +55,6 @@ body {
   opacity: 0.9;
 }
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.gallery-item {
-  width: 100%;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
-.gallery-item p {
-  margin: 5px 0;
-  font-size: 0.9em;
-  color: red;
-}
-
-/* Favorite highlighting */
-.favorite p::after {
-  content: ' ⭐️';
-}
-
 /* Responsive adjustments for mobile devices */
 @media (max-width: 600px) {
   .card {
