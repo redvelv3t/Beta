@@ -75,7 +75,6 @@ body {
   text-decoration: underline;
 }
 
-/* Responsive adjustments for mobile devices */
 @media (max-width: 600px) {
   .card {
     padding: 15px;
